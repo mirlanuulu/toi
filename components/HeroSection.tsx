@@ -122,7 +122,7 @@ export default function HeroSection({ play }: { play: boolean }) {
         />
         <p
           ref={taglineRef}
-          className="max-w-[19rem] font-serif text-[1.6rem] italic leading-[1.35] text-[var(--color-text)] sm:max-w-xl sm:text-4xl sm:leading-snug"
+          className="max-w-[21rem] font-serif text-[2.1rem] italic leading-[1.25] text-[var(--color-text)] sm:max-w-2xl sm:text-5xl sm:leading-[1.2]"
         >
           {splitToWords(ui.heroTagline)}
         </p>

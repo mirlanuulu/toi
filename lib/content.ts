@@ -22,7 +22,7 @@ export const content = {
   /** ISO-строка с датой и временем тоя (используется для countdown/calendar) */
   eventDateISO: "2026-10-09T14:00:00+06:00",
   eventDateDisplay: "9-октябрь, 2026",
-  eventTimeDisplay: "00:00",
+  eventTimeDisplay: "16:00",
   eventMonthLabel: "Октябрь",
   eventYear: 2026,
   eventDay: 9,
@@ -32,12 +32,14 @@ export const content = {
   venueAddress: "Нарын шаары",
   mapUrl: "https://2gis.kg/bishkek/geo/70000001078946817/76.021591,41.424102",
 
-  whatsappNumber: "996XXXXXXXXX",
+  /** 0 703 75 81 04 в международном формате, без "+" — так требует wa.me */
+  whatsappNumber: "996703758104",
 } as const;
 
 /** Подписи интерфейса — только кыргызский */
 export const ui = {
-  introHint: "Открытканы ачуу үчүн басыңыз",
+  introButton: "Чакырууну ачуу",
+  timeLabel: "Той башталат",
   heroTagline: "Тоюбуздун кубанычын биз менен бөлүшүүгө чакырабыз",
   countdownLabel: "Тойго чейин",
   countdownUnits: { days: "күн", hours: "саат", minutes: "мүнөт", seconds: "секунд" },

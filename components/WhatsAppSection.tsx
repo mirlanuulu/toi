@@ -74,7 +74,7 @@ export default function WhatsAppSection() {
             onChange={(e) => setName(e.target.value)}
             placeholder={ui.rsvpNamePlaceholder}
             aria-label={ui.rsvpNameLabel}
-            className="w-full border-0 border-b border-[var(--color-gold-soft)] bg-transparent px-1 pb-3 text-center font-serif text-2xl text-[var(--color-text)] outline-none transition-colors placeholder:font-serif placeholder:text-xl placeholder:italic placeholder:tracking-wide placeholder:text-[var(--color-text-muted)]/55 focus:border-[var(--color-gold)]"
+            className="w-full border-0 border-b border-[var(--color-gold-soft)] bg-transparent px-1 pb-3 text-center font-serif text-3xl italic tracking-wide text-[var(--color-text)] outline-none transition-colors placeholder:text-xl placeholder:text-[var(--color-text-muted)]/55 focus:border-[var(--color-gold)]"
           />
         </div>
 

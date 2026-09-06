@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import InvitationSection from "@/components/InvitationSection";
 import CalendarSection from "@/components/CalendarSection";
 import CountdownSection from "@/components/CountdownSection";
+import TimeSection from "@/components/TimeSection";
 import DetailsSection from "@/components/DetailsSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import WhatsAppSection from "@/components/WhatsAppSection";
@@ -85,6 +86,7 @@ export default function Home() {
         <HeroSection play={introOpened} />
         <InvitationSection />
         <CalendarSection />
+        <TimeSection />
         <CountdownSection />
         <DetailsSection />
         <MarqueeSection />
