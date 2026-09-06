@@ -39,7 +39,7 @@ export const content = {
 /** Подписи интерфейса — только кыргызский */
 export const ui = {
   introButton: "Чакырууну ачуу",
-  timeLabel: "Той башталат",
+  timeLabel: "Тойдун башталышы",
   heroTagline: "Тоюбуздун кубанычын биз менен бөлүшүүгө чакырабыз",
   countdownLabel: "Тойго чейин",
   countdownUnits: { days: "күн", hours: "саат", minutes: "мүнөт", seconds: "секунд" },

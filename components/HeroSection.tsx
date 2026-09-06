@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsapConfig";
 import { content, ui } from "@/lib/content";
+import ScrollCue from "@/components/ui/ScrollCue";
 
 function splitToChars(text: string) {
   return text.split("").map((char, i) => (
@@ -122,10 +123,12 @@ export default function HeroSection({ play }: { play: boolean }) {
         />
         <p
           ref={taglineRef}
-          className="max-w-[21rem] font-serif text-[2.1rem] italic leading-[1.25] text-[var(--color-text)] sm:max-w-2xl sm:text-5xl sm:leading-[1.2]"
+          className="max-w-[21rem] font-serif text-[2.1rem] italic leading-[1.25] text-[var(--color-gold)] sm:max-w-2xl sm:text-5xl sm:leading-[1.2]"
         >
           {splitToWords(ui.heroTagline)}
         </p>
+
+        <ScrollCue className="mt-4" />
       </div>
     </section>
   );

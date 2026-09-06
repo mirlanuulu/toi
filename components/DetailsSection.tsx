@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsapConfig";
 import { content, ui } from "@/lib/content";
+import ScrollCue from "@/components/ui/ScrollCue";
 
 export default function DetailsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -128,6 +129,10 @@ export default function DetailsSection() {
         >
           {ui.hostsLabel}: {content.hosts.map((h) => `${h.name1} & ${h.name2}`).join(", ")}
         </p>
+
+        <span data-line className="mt-10 block">
+          <ScrollCue />
+        </span>
       </div>
     </section>
   );

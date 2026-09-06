@@ -58,6 +58,23 @@ body {
   animation: shimmer 2.6s ease-in-out infinite;
 }
 
+.scroll-cue-chevron {
+  opacity: 0.25;
+  animation: scroll-cue 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(-2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+}
+
 @keyframes shimmer {
   0% {
     transform: translateX(0) skewX(-20deg);
