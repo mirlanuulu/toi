@@ -54,6 +54,20 @@ body {
   -webkit-text-stroke: 1px var(--color-gold);
 }
 
+.shimmer {
+  animation: shimmer 2.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+  }
+  55%,
+  100% {
+    transform: translateX(600%) skewX(-20deg);
+  }
+}
+
 :focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;

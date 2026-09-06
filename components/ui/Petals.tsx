@@ -19,8 +19,9 @@ export default function Petals() {
       const startX = gsap.utils.random(0, 100);
       const drift = gsap.utils.random(-12, 12);
       const duration = gsap.utils.random(14, 26);
+      const scale = gsap.utils.random(0.75, 1.6);
 
-      gsap.set(petal, { left: `${startX}vw`, top: "-8vh", opacity: 0 });
+      gsap.set(petal, { left: `${startX}vw`, top: "-8vh", opacity: 0, scale });
 
       return gsap.to(petal, {
         keyframes: {
@@ -51,7 +52,7 @@ export default function Petals() {
         <span
           key={i}
           data-petal
-          className="absolute h-2 w-1.5 rounded-[100%_0_100%_0] bg-[var(--color-gold)] opacity-0"
+          className="absolute h-4 w-3 rounded-[100%_0_100%_0] bg-[var(--color-gold)] opacity-0"
         />
       ))}
     </div>
