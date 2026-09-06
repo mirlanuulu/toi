@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #fefcf8; /* тёплый белый — фон */
+  --color-cream: #f5eee0; /* кремовый — карточки/секции-подложки */
+  --color-gold: #c9a96a; /* основное золото — акценты, линии, кнопки */
+  --color-gold-soft: #e4d4b0; /* светлое золото — hover, второстепенные акценты */
+  --color-text: #2c2620; /* тёмно-коричневый (не чёрный!) — основной текст */
+  --color-text-muted: #8b7355; /* приглушённый — подписи, второстепенный текст */
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-cream: var(--color-cream);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.marquee-track {
+  animation: marquee 26s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-text {
+  -webkit-text-stroke: 1px var(--color-gold);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
