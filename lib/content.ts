@@ -55,6 +55,8 @@ export const ui = {
   rsvpNameLabel: "Атыңыз",
   rsvpNamePlaceholder: "Атыңызды жазыңыз",
   rsvpSend: "Жоопту жөнөтүү",
+  /** Короткий вариант для узких кнопок «стенка на стенку» */
+  rsvpSendShort: "Жөнөтүү",
   musicOn: "Обонду күйгүзүү",
   musicOff: "Обонду өчүрүү",
 } as const;
