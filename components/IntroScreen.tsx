@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "@/lib/gsapConfig";
+import { content, ui } from "@/lib/content";
 
 type IntroScreenProps = {
   /** Вызывается синхронно в обработчике клика — здесь родитель должен
@@ -12,21 +14,47 @@ type IntroScreenProps = {
 export default function IntroScreen({ onOpen }: IntroScreenProps) {
   const [closed, setClosed] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const panelLeftRef = useRef<HTMLDivElement>(null);
-  const panelRightRef = useRef<HTMLDivElement>(null);
-  const diamondRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const hintRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const breathe = gsap.to(diamondRef.current, {
-      scale: 1.12,
-      duration: 2.2,
+
+    // set + to, а не from: в Strict Mode эффект отрабатывает дважды,
+    // и killed from-твин оставил бы карточку на opacity 0.
+    gsap.set(cardRef.current, { y: 60, opacity: 0, scale: 0.94 });
+    gsap.set(hintRef.current, { opacity: 0, y: 12 });
+
+    const tl = gsap.timeline();
+    tl.to(cardRef.current, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 1.2,
+      ease: "power3.out",
+    }).to(hintRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, "-=0.5");
+
+    const float = gsap.to(cardRef.current, {
+      y: -10,
+      duration: 3,
       ease: "sine.inOut",
       repeat: -1,
       yoyo: true,
+      delay: 1.2,
     });
+    const pulse = gsap.to(hintRef.current, {
+      opacity: 0.45,
+      duration: 1.6,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      delay: 1.2,
+    });
+
     return () => {
-      breathe.kill();
+      tl.kill();
+      float.kill();
+      pulse.kill();
     };
   }, []);
 
@@ -37,53 +65,65 @@ export default function IntroScreen({ onOpen }: IntroScreenProps) {
     onOpen();
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const tl = gsap.timeline({
-      onComplete: () => setClosed(true),
-    });
+    const tl = gsap.timeline({ onComplete: () => setClosed(true) });
 
     if (reduced) {
       tl.to(overlayRef.current, { opacity: 0, duration: 0.01 });
       return;
     }
 
-    tl.to(overlayRef.current, { opacity: 1, duration: 0 })
-      .to([panelLeftRef.current], { xPercent: -100, duration: 0.9, ease: "power3.inOut" }, 0.1)
-      .to([panelRightRef.current], { xPercent: 100, duration: 0.9, ease: "power3.inOut" }, 0.1)
-      .to(overlayRef.current, { opacity: 0, duration: 0.2 }, "-=0.1");
+    tl.to(hintRef.current, { opacity: 0, duration: 0.25 })
+      .to(cardRef.current, { scale: 1.06, duration: 0.35, ease: "power2.out" }, 0)
+      .to(
+        cardRef.current,
+        { y: "-115%", rotate: -3, duration: 1, ease: "power3.inOut" },
+        0.25,
+      )
+      .to(overlayRef.current, { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 0.6);
   }
 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-cream)] px-6"
       role="button"
       tabIndex={0}
-      aria-label="Нажмите, чтобы открыть приглашение"
+      aria-label={ui.introHint}
       onClick={handleOpen}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") handleOpen();
       }}
     >
-      <div
-        ref={panelLeftRef}
-        className="absolute inset-y-0 left-0 w-1/2 bg-[var(--color-cream)]"
-      />
-      <div
-        ref={panelRightRef}
-        className="absolute inset-y-0 right-0 w-1/2 bg-[var(--color-cream)]"
-      />
-
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-6 px-6 text-center">
+      <div className="flex flex-col items-center gap-8">
         <div
-          ref={diamondRef}
-          aria-hidden="true"
-          className="h-16 w-16 rotate-45 border border-[var(--color-gold)]"
-        />
-        <p className="font-serif text-3xl italic text-[var(--color-text)] sm:text-4xl">
-          Той-беш
-        </p>
-        <p className="max-w-xs text-sm tracking-wide text-[var(--color-text-muted)]">
-          Нажмите, чтобы открыть приглашение
+          ref={cardRef}
+          className="relative aspect-[3/4] w-[74vw] max-w-sm overflow-hidden rounded-[2px] shadow-[0_30px_60px_-20px_rgba(44,38,32,0.45)] ring-1 ring-[var(--color-gold)]/40"
+        >
+          <Image
+            src="/images/intro-card.png"
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 640px) 384px, 74vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-text)]/45 via-transparent to-transparent" />
+
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 p-6 text-center">
+            <p className="font-serif text-3xl text-[var(--color-bg)] sm:text-4xl">
+              {content.groomName} &amp; {content.brideName}
+            </p>
+            <p className="text-xs tracking-[0.35em] text-[var(--color-bg)]/85">
+              {content.eventDateDisplay}
+            </p>
+          </div>
+        </div>
+
+        <p
+          ref={hintRef}
+          className="text-center text-sm tracking-[0.2em] text-[var(--color-text-muted)]"
+        >
+          {ui.introHint}
         </p>
       </div>
     </div>

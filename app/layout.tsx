@@ -18,14 +18,14 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Нурбек & Керемет — Той-приглашение",
-  description: "Приглашаем вас разделить с нами радость нашего тоя.",
+  title: "Нурбек & Керемет — Той чакыруу",
+  description: "Тоюбуздун кубанычын биз менен бөлүшүүгө чакырабыз.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="ru"
+      lang="ky"
       className={`${cormorant.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)]">

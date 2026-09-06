@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsapConfig";
-import { content } from "@/lib/content";
+import { content, ui } from "@/lib/content";
 
 export default function DetailsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,7 +80,7 @@ export default function DetailsSection() {
           data-line
           className="text-xs uppercase tracking-[0.4em] text-[var(--color-text-muted)]"
         >
-          Той салтанаты
+          {ui.detailsLabel}
         </p>
 
         <p
@@ -93,7 +93,7 @@ export default function DetailsSection() {
           data-line
           className="mt-2 font-serif text-2xl italic text-[var(--color-gold)] sm:text-3xl"
         >
-          {content.eventMonthLabel.toLowerCase()} 2026
+          {content.eventMonthLabel.toLowerCase()} {content.eventYear}
         </p>
         <p data-line className="mt-3 text-sm tracking-[0.2em] text-[var(--color-text-muted)]">
           саат {content.eventTimeDisplay}дө
@@ -115,7 +115,7 @@ export default function DetailsSection() {
           rel="noopener noreferrer"
           className="group mt-8 inline-flex items-center gap-2 border-b border-[var(--color-gold)] pb-1 text-sm tracking-wide text-[var(--color-text)] transition-colors hover:text-[var(--color-gold)]"
         >
-          Картаны ачуу
+          {ui.mapLink}
           <ArrowUpRight
             size={16}
             className="text-[var(--color-gold)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -126,7 +126,7 @@ export default function DetailsSection() {
           data-line
           className="mt-14 max-w-xs text-sm italic leading-relaxed text-[var(--color-text-muted)]"
         >
-          Той ээлери: {content.hosts.map((h) => `${h.name1} & ${h.name2}`).join(", ")}
+          {ui.hostsLabel}: {content.hosts.map((h) => `${h.name1} & ${h.name2}`).join(", ")}
         </p>
       </div>
     </section>

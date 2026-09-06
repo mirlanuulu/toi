@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { gsap, ScrollTrigger, registerGsap } from "@/lib/gsapConfig";
-import { content } from "@/lib/content";
+import { content, ui } from "@/lib/content";
 
 const WEEKDAYS = ["Дү", "Ше", "Ша", "Бе", "Жм", "Иш", "Жк"];
 
@@ -70,7 +70,7 @@ export default function CalendarSection() {
   return (
     <section className="flex flex-col items-center gap-6 px-6 py-24">
       <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
-        Той-күн
+        {ui.calendarLabel}
       </p>
       <h2 className="font-serif text-3xl text-[var(--color-text)] sm:text-4xl">
         {content.eventMonthLabel} {year}
@@ -107,7 +107,7 @@ export default function CalendarSection() {
       </div>
 
       <p className="mt-2 text-center font-serif text-lg italic text-[var(--color-text-muted)]">
-        {content.eventDateDisplay}, саат {content.eventTimeDisplay}дө
+        {content.eventDateDisplay} — саат {content.eventTimeDisplay}дө
       </p>
     </section>
   );

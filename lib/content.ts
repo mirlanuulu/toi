@@ -1,6 +1,6 @@
 /**
- * Контент сайта. Пока часть полей (точное время, номер WhatsApp) остаётся
- * плейсхолдером — заменить после получения от клиента.
+ * Весь текст сайта — на кыргызском. Точное время и номер WhatsApp
+ * пока плейсхолдеры, заменить после получения от клиента.
  */
 export const content = {
   groomName: "Нурбек",
@@ -21,17 +21,38 @@ export const content = {
 
   /** ISO-строка с датой и временем тоя (используется для countdown/calendar) */
   eventDateISO: "2026-10-09T14:00:00+06:00",
-  eventDateDisplay: "9 октября 2026",
+  eventDateDisplay: "9-октябрь, 2026",
   eventTimeDisplay: "00:00",
   eventMonthLabel: "Октябрь",
+  eventYear: 2026,
   eventDay: 9,
-  rsvpDeadlineDisplay: "5 октября",
+  rsvpDeadlineDisplay: "5-октябрга",
 
   venueName: "Аска-Нур",
-  venueAddress: "г. Нарын",
-  mapUrl:
-    "https://2gis.kg/bishkek/geo/70000001078946817/76.021591,41.424102",
+  venueAddress: "Нарын шаары",
+  mapUrl: "https://2gis.kg/bishkek/geo/70000001078946817/76.021591,41.424102",
 
   whatsappNumber: "996XXXXXXXXX",
-  whatsappMessage: "Ассалому алейкум! Хочу подтвердить участие в тое.",
 } as const;
+
+/** Подписи интерфейса — только кыргызский */
+export const ui = {
+  introHint: "Открытканы ачуу үчүн басыңыз",
+  heroTagline: "Тоюбуздун кубанычын биз менен бөлүшүүгө чакырабыз",
+  countdownLabel: "Тойго чейин",
+  countdownUnits: { days: "күн", hours: "саат", minutes: "мүнөт", seconds: "секунд" },
+  calendarLabel: "Той-күн",
+  detailsLabel: "Той салтанаты",
+  mapLink: "Картаны ачуу",
+  hostsLabel: "Той ээлери",
+  rsvpTitle: "Кубанычыбызга ортоктош болуңуздар!",
+  rsvpNameLabel: "Атыңыз",
+  rsvpNamePlaceholder: "Атыңызды жазыңыз",
+  rsvpSend: "Жоопту жөнөтүү",
+  musicOn: "Обонду күйгүзүү",
+  musicOff: "Обонду өчүрүү",
+} as const;
+
+export function rsvpHint() {
+  return `Тойго катышууңузду ${content.rsvpDeadlineDisplay} чейин ырастап коюңуз`;
+}
