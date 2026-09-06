@@ -78,12 +78,12 @@ export default function IntroScreen({ onOpen }: IntroScreenProps) {
         className="absolute inset-0 translate-y-full bg-[var(--color-cream)]"
       />
 
-      <div className="absolute inset-x-0 bottom-0 flex justify-center p-10 sm:p-14">
+      <div className="absolute inset-0 flex items-center justify-center px-6">
         <button
           ref={buttonRef}
           type="button"
           onClick={handleOpen}
-          className="group relative overflow-hidden rounded-full border border-[var(--color-bg)]/70 bg-[var(--color-bg)]/10 px-10 py-4 font-serif text-lg tracking-[0.15em] text-[var(--color-bg)] backdrop-blur-md transition-all duration-500 hover:border-[var(--color-bg)] hover:bg-[var(--color-bg)]/20 sm:text-xl"
+          className="pulse-light group relative overflow-hidden rounded-full border-2 border-[var(--color-bg)]/80 bg-[var(--color-bg)]/15 px-9 py-5 font-serif text-xl tracking-[0.12em] text-[var(--color-bg)] backdrop-blur-md transition-all duration-500 hover:border-[var(--color-bg)] hover:bg-[var(--color-bg)]/25 sm:text-2xl"
         >
           <span
             aria-hidden="true"

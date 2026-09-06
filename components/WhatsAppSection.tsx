@@ -49,8 +49,9 @@ export default function WhatsAppSection() {
 
   return (
     <section
+      id="rsvp"
       ref={rootRef}
-      className="flex flex-col items-center gap-8 px-6 py-32 text-center"
+      className="flex scroll-mt-16 flex-col items-center gap-8 px-6 py-28 text-center"
     >
       <span data-line className="h-px w-16 bg-[var(--color-gold)]" aria-hidden="true" />
 
@@ -61,11 +62,15 @@ export default function WhatsAppSection() {
         {ui.rsvpTitle}
       </p>
 
-      <p data-line className="max-w-xs text-sm leading-relaxed text-[var(--color-text-muted)]">
-        {rsvpHint()}
-      </p>
+      <div
+        data-line
+        className="flex w-full max-w-md flex-col items-center gap-6 rounded-3xl border-2 border-[var(--color-gold)]/45 bg-[var(--color-cream)]/70 px-6 py-10 shadow-[0_16px_50px_-24px_rgba(44,38,32,0.4)] sm:px-10"
+      >
+        <p className="max-w-xs font-serif text-xl leading-relaxed text-[var(--color-text)] sm:text-2xl">
+          {rsvpHint()}
+        </p>
 
-      <div data-line className="mt-4 flex w-full max-w-sm flex-col gap-5">
+      <div className="flex w-full max-w-sm flex-col gap-5">
         <div className="relative">
           <input
             id="rsvp-name"
@@ -86,7 +91,7 @@ export default function WhatsAppSection() {
           onClick={(e) => {
             if (!canSend) e.preventDefault();
           }}
-          className={`group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 text-sm tracking-[0.1em] transition-all duration-300 ${
+          className={`group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-5 text-base tracking-[0.1em] transition-all duration-300 ${
             canSend
               ? "cursor-pointer bg-[var(--color-gold)] text-[var(--color-bg)] shadow-[0_10px_30px_-10px_rgba(201,169,106,0.8)] hover:scale-[1.03]"
               : "cursor-not-allowed border border-[var(--color-gold-soft)] text-[var(--color-text-muted)]/70"
@@ -101,6 +106,7 @@ export default function WhatsAppSection() {
           <WhatsAppIcon className="relative h-5 w-5" />
           <span className="relative">{ui.rsvpSend}</span>
         </a>
+        </div>
       </div>
     </section>
   );

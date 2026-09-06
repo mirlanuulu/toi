@@ -9,7 +9,7 @@ export default function ScrollCue({ className = "" }: { className?: string }) {
         <svg
           key={i}
           viewBox="0 0 24 12"
-          className="scroll-cue-chevron -mt-1.5 h-3 w-6 first:mt-0"
+          className="scroll-cue-chevron -mt-[10px] h-[21px] w-[42px] first:mt-0"
           style={{ animationDelay: `${i * 0.18}s` }}
         >
           <path

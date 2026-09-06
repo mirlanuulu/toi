@@ -11,6 +11,7 @@ import DetailsSection from "@/components/DetailsSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import WhatsAppSection from "@/components/WhatsAppSection";
 import MusicToggle from "@/components/MusicToggle";
+import RsvpJumpButton from "@/components/RsvpJumpButton";
 import Petals from "@/components/ui/Petals";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 
@@ -94,6 +95,7 @@ export default function Home() {
       </main>
 
       <MusicToggle visible={introOpened} playing={playing} onToggle={toggleMusic} />
+      <RsvpJumpButton visible={introOpened} />
     </>
   );
 }
